@@ -1,0 +1,45 @@
+# Logging into opneshift console
+ 1. Kubeadmin virtual user
+		a. Oc login –u kubeadmin –p <password location in file given>   <api endpoint >
+		b. Web console
+			i. User: kubeadmin
+			ii. Pass: given in password file location
+	2. X.509
+		a. [user@host ~]$ export KUBECONFIG=/home/user/auth/kubeconfig
+
+_____________________________________________________________________________________________
+#resume a node from maintenance mode v1
+	1. Able to schedule pods
+	2. Shows status  only of READY
+	Guide material  &  Guided Exercise  &  Lab
+Put in maint mode:
+	• oc adm cordon worker02
+	• oc adm drain worker02 --delete-emptydir-data  --ignore-daemonsets –force
+Bring out of maintenace mode:
+	• oc adm uncordon worker02
+CAN DO THIS IS GUI
+______________________________________________________________________________________________
+Querying Virtual Resource Metrics
+As a cluster administrator, you can monitor and query metrics on all projects in the cluster. RHOCP uses Role Based Access Control (RBAC) to grant permissions to cluster resources, including project monitoring.
+By default, developer users can only monitor projects where they have the view role permissions. Developer users can view monitoring information in the OpenShift web console by navigating to the Observe → Metrics menu. From there, a developer can run performance metric queries, one at a time.
+Cluster administrators can grant permissions for additional projects to developer users.
+As a cluster administrator, use the following command to grant view role permissions to a user:
+oc adm policy add-role-to-user view user -n project
+
+To grant the view role permissions to a group, run the following command:
+oc adm policy add-role-to-group view group -n project
+
+__________________________________________________________________________________________________
+
+Strict network access policy 
+
+dnf install httpd
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload
+systemctl enable --now httpd
+
+___________________________________________________________________________________________________
+Multi-homed networks      and guided exercise have to c
+Have to create network attachment definition after you create a network node configuration policy
+_____________________________________________________________________________________________________
+
